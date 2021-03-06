@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from '../heroes/Hero';
+import {Hero} from './Hero';
+import {HEROES} from './mock-heroes';
 
 @Component({
   selector: 'app-heroes',
@@ -7,12 +8,8 @@ import {Hero} from '../heroes/Hero';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-
-  // tslint:disable-next-line:variable-name
-  private _hero: Hero = {
-    id: 1,
-    name: 'chiến'
-  };
+  heroes = HEROES;
+  selectedHero?: Hero;
 
   constructor() {
   }
@@ -20,12 +17,7 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  get hero(): Hero {
-    return this._hero;
-  }
-
-  set hero(value: Hero) {
-    this._hero = value;
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
   }
 }
